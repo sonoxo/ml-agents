@@ -1,5 +1,5 @@
 from typing import Any, Optional
-from gym import error
+from gymnasium import error
 from mlagents_envs.base_env import BaseEnv
 from pettingzoo import AECEnv
 
@@ -22,8 +22,8 @@ class UnityAECEnv(UnityPettingzooBaseEnv, AECEnv):
 
     def step(self, action: Any) -> None:
         """
-        Sets the action of the active agent and get the observation, reward, done
-        and info of the next agent.
+        Sets the action of the active agent and get the observation, reward,
+        termination, truncation and info of the next agent.
         :param action: The action for the active agent
         """
         self._assert_loaded()
@@ -53,16 +53,20 @@ class UnityAECEnv(UnityPettingzooBaseEnv, AECEnv):
         return (
             self._observations[agent_id],
             self._cumm_rewards[agent_id],
-            self._dones[agent_id],
+            self._terminations[agent_id],
+            self._truncations[agent_id],
             self._infos[agent_id],
         )
 
     def last(self, observe=True):
         """
-        returns observation, cumulative reward, done, info for the current agent (specified by self.agent_selection)
+        returns observation, cumulative reward, termination, truncation, info
+        for the current agent (specified by self.agent_selection)
         """
-        obs, reward, done, info = self.observe(self._agents[self._agent_index])
-        return obs if observe else None, reward, done, info
+        obs, cumm_rewards, terminated, truncated, info = self.observe(
+            self._agents[self._agent_index]
+        )
+        return obs if observe else None, cumm_rewards, terminated, truncated, info
 
     @property
     def agent_selection(self):
