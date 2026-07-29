@@ -6,26 +6,26 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to
 [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [4.1.0] - 2026-07-27
 ### Major Changes
 #### ml-agents / ml-agents-envs
 - Migrated from gym to gymnasium (#6309)
 
 ### Minor Changes
 #### com.unity.ml-agents (C#)
-- Fixed StackingSensor compressed observation for sensors with more than 3 channels. (#6299)
-- Fixed a crash that could occur when exiting playmode (#6296)
-- Fixed compatibility of Google.Protobuf_Packed.dll with ILL2CPP (#6313)
-- Fixed Google.Protobuf_Packed.dll being shadowed by Sentis copy of the dll (#6310)
+- Fixed `StackingSensor` compressed observation for sensors with more than 3 channels. (#6299)
+- Fixed a crash that could occur when exiting Play mode. (#6296)
+- Fixed compatibility of `Google.Protobuf_Packed.dll` with IL2CPP. (#6313)
+- Fixed `Google.Protobuf_Packed.dll` being shadowed by Sentis' copy of the DLL. (#6310)
 
 #### ml-agents / ml-agents-envs
 - Fixed a bug when using LSTM and SAC where the buffer might contain non-integer numbers of sequences. (#6301)
-- Fixed mixed CPU/GPU computation by ensuring tensors share a consistent device in the trainer; Updated training devices. (#6303)
-- Fixed typing on optional strings (#6311)
-- Tighten assertion bound for test_process_pixels_gray (#6312)
+- Fixed mixed CPU/GPU computation by ensuring tensors share a consistent device in the trainer. Updated training devices. (#6303)
+- Fixed typing on optional strings. (#6311)
+- Tightened assertion bound for `test_process_pixels_gray` (#6312)
 
 #### Examples
-- Replace hardcoded value 200f by agentRotationSpeed in MoveAgent() (#6306)
+- Replace hardcoded value `200f` by `agentRotationSpeed` in `MoveAgent()`. (#6306)
 
 ## [4.0.3] - 2026-04-17
 ### Minor Changes
